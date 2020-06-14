@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser")
 const app = express();
 const mongoose = require("mongoose")
+
 require("dotenv/config")
 
 
@@ -11,7 +12,9 @@ app.use(bodyParser.json());
 
 //import routes
 const postsRoutes = require("./routes/people");
+const eventsRoutes = require("./routes/events")
 app.use("/people", postsRoutes);
+app.use("/events", eventsRoutes);
 
 //ROUTES
 app.get("/", (req, res) => {
