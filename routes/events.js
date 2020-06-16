@@ -6,10 +6,11 @@ const Event = require("../models/Event")
 router.get("/", async (req, res) => {
     try {
         console.log("ayo")
-        const results = await Event.find().limit(5);
+        const results = await Event.find();
         const events = results.map(async (e, k) => {
             const person = await Person.findOne({RFID: e.RFID})
             var temp = {
+                createdAt: e.createdAt,
                 granted: e.granted,
                 RFID: e.RFID,
             }
